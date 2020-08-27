@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html"%}
+{% block title %}
+    Create a new entry
+{% endblock %}
+
+{% block body %}
+{% if error %}
+<h1 style="color: red">Title already exists!</h1>
+<form method=post>
+    {% csrf_token %}
+<h2 class="lead m-auto">Title:</h2>
+    {{newpage.title}}
+<h2 class="lead m-auto">Content:</h2>
+    {{newpage.content}}
+<input type="submit" class="btn btn-primary mt-1" placeholder="Publish"></input>
+</form>
+{% else %}
+<form method=post>
+    {% csrf_token %}
+<h2 class="lead m-auto">Title:</h2>
+    {{newpage.title}}
+<h2 class="lead m-auto">Content:</h2>
+    {{newpage.content}}
+<input type="submit" class="btn btn-primary mt-1" placeholder="Publish"></input>
+</form>
+{% endif %}
+{% endblock %}
